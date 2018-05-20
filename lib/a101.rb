@@ -28,4 +28,5 @@ b.css("div.park-place").each{|x|
 	end
 	total+=1
 }
-puts "Total: #{total}, free: #{free}, hold: #{hold}"
+puts("Статистика заполненных мест на основе сайта a101 на #{Time.new.strftime("%d.%m.%Y")}")
+printf("Всего #{total}, свободно #{free}, занято #{hold} -- заполнено на %2.2f %%\n",hold/total.to_f*100)
