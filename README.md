@@ -9,6 +9,7 @@ On Ubuntu:
 
 Install requirements:
 * bundler install --path vendor/bundle
+
 or
 * make install
 
@@ -17,7 +18,10 @@ or
 Change dir to lib and run script:
 * cd lib
 * make
+
 or
 * bundler exec ./a101.rb
 
-# origin uri: https://github.com/BASM/pbt
+# About
+
+origin uri: https://github.com/BASM/pbt
