@@ -4,23 +4,33 @@ Parking bot
 # Install
 
 On Ubuntu:
-* sudo apt install ruby ruby-dev ruby-bundler build-essential zlib1g-dev
-* cd lib
+```
+ sudo apt install ruby ruby-dev ruby-bundler build-essential zlib1g-dev
+ cd lib
+```
 
 Install requirements:
-* bundler install --path vendor/bundle
+```
+ bundler install --path vendor/bundle
+```
 
 or
-* make install
+```
+ make install
+```
 
 # Usage
 
 Change dir to lib and run script:
-* cd lib
-* make
+```
+ cd lib
+ make
+```
 
 or
-* bundler exec ./a101.rb
+```
+ bundler exec ./a101.rb
+```
 
 or using docker:
 ```
