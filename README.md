@@ -1,10 +1,10 @@
 # Pbt
 Parking bot
 
-# Install 
+# Install
 
 On Ubuntu:
-* sudo apt install ruby ruby-dev ruby-bundler
+* sudo apt install ruby ruby-dev ruby-bundler build-essential zlib1g-dev
 * cd lib
 
 Install requirements:
@@ -13,7 +13,7 @@ Install requirements:
 or
 * make install
 
-# Usage 
+# Usage
 
 Change dir to lib and run script:
 * cd lib
@@ -21,6 +21,12 @@ Change dir to lib and run script:
 
 or
 * bundler exec ./a101.rb
+
+or using docker:
+```
+docker build . -t pbt
+docker run --rm -it pbt
+```
 
 # About
 
