@@ -36,14 +36,22 @@ b.css("g.parkplace").each{|x|
 	total+=1
 }
 
-if total!=1210
-  # Корректировка из-за пропадания на сайте
-  # этажей 6 и 7
-  hold+=358
-  total+=358
-end
+floornames=[]
+# Смотрим сколько этажей отображено на сайте и записываем размер корректировки и названия этажей 
+floorselllist=1210 - b.css("div.js-parking-page-floor-btn").map{|x|
+	num=x.attr('data-floor').to_i
+	floornames+=[num]
+	case num
+	when 1 then    152
+	when 2..6 then 175
+	when 7 then    183
+	end
+}.sum
+# Корректировка из-за пропадания на сайте проданных этажей
+hold+=floorselllist
+total+=floorselllist
 
-raise "Неверное кол-во мест" if total!=1210
+raise "Неверное кол-во мест, должно быть #{1210} а мы насчитали #{total}" if total!=1210
 
 printf "Статистика заполнения паркинга на основе сайта a101 от #{Time.new.strftime("%d.%m.%Y")} - %5.2f%%:\n", hold/total.to_f*100
 puts "Всего - #{total}"
@@ -84,7 +92,7 @@ levels.to_enum.with_index(1).each{|level,num|
   }
   break if pnum==0
   price_m=price/pnum
-  puts "Этаж #{num}: в продаже #{pnum}/#{total}, цена #{price_min}-#{price_max} (#{price_min+fix}-#{price_max+fix}) (в среднем #{price_m}, #{price_m+40})"
+  puts "Этаж #{floornames[num-1]}: в продаже #{pnum}/#{total}, цена #{price_min}-#{price_max} (#{price_min+fix}-#{price_max+fix}) (в среднем #{price_m}, #{price_m+40})"
   totalfree+=pnum
 }
 puts "В скобках указаны реальные цены, с учётом обязательного взоса 40 т.р."
