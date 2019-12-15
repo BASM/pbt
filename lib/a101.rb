@@ -46,7 +46,7 @@ floorselllist=1210 - b.css("div.js-parking-page-floor-btn").map{|x|
 	when 2..6 then 175
 	when 7 then    183
 	end
-}.sum
+}.inject(0,:+) #fucking ".sum" isn't works everywere
 # Корректировка из-за пропадания на сайте проданных этажей
 hold+=floorselllist
 total+=floorselllist
