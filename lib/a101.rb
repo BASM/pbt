@@ -73,7 +73,8 @@ b.css("div.complex-detail-visual__tooltips").each{|x|
   levels+=[placeinfo]
 }
 totalfree=0
-fix=40
+#requi=40 #раньше было
+requi=10 # говорят сейчас так
 levels.to_enum.with_index(1).each{|level,num|
   price=0
   pnum=0
@@ -92,8 +93,8 @@ levels.to_enum.with_index(1).each{|level,num|
   }
   break if pnum==0
   price_m=price/pnum
-  puts "Этаж #{floornames[num-1]}: в продаже #{pnum}/#{total}, цена #{price_min}-#{price_max} (#{price_min+fix}-#{price_max+fix}) (в среднем #{price_m}, #{price_m+40})"
+  puts "Этаж #{floornames[num-1]}: в продаже #{pnum}/#{total}, цена #{price_min}-#{price_max} (#{price_min+requi}-#{price_max+requi}) (в среднем #{price_m}, #{price_m+requi})"
   totalfree+=pnum
 }
-puts "В скобках указаны реальные цены, с учётом обязательного взоса 40 т.р."
+puts "В скобках указаны реальные цены, с учётом обязательного взоса #{requi} т.р."
 raise "Кол-во свободных мест не сходится #{totalfree} != #{free+reserve}" if totalfree!=(free+reserve)
